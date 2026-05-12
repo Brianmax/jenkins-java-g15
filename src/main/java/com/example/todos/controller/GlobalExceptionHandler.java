@@ -25,8 +25,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidation(MethodArgumentNotValidException ex) {
         List<ErrorResponse.FieldViolation> violations = ex.getBindingResult()
-                .getFieldErrors().stream()
-                .map(fe -> new ErrorResponse.FieldViolation(fe.getField(), fe.getDefaultMessage()))
+                .getFieldErrors()
+                .stream()
+                .map(fe -> new ErrorResponse.FieldViolation(fe.getField(), fe.getDefaultMessage())).toList();
         System.out.println("klsjfdlkasjdlfkas");
         ErrorResponse body = ErrorResponse.withFieldErrors(
                 HttpStatus.BAD_REQUEST.value(), "Bad Request", "Validation failed", violations);

@@ -46,7 +46,6 @@ public class TodoController {
     @PutMapping("/{id}")
     public TodoResponse update(@PathVariable Long id,
                                @Valid @RequestBody TodoUpdateRequest request) {
-        fdasfasdfsa
         return todoService.update(id, request);
     }
 
