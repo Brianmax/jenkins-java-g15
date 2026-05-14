@@ -54,6 +54,7 @@ public class TodoService {
         Todo saved = todoRepository.save(todo);
         log.info("operation=todo.created todoId={}", saved.getId());
         System.out.println("jafkldjlkfjlkdslj");
+
         return toResponse(saved);
     }
 
